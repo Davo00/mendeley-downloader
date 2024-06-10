@@ -2,24 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Mendeley Python Example</title>
+    <title>Mendeley Python Downloader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 
 <body>
-<h1>{{doc['title']}}</h1>
+<div class="container">
+    <h1>{{doc['title']}}</h1>
 
-<h2>Authors</h2>
-<ul>
-    {% for author in doc['authors'] %}
-        <li>{{author['first_name']}} {{author['last_name']}}</li>
-    {% endfor %}
-</ul>
+    <h2>Authors</h2>
+    <ul>
+        {% for author in doc['authors'] %}
+            <li>{{author['first_name']}} {{author['last_name']}}</li>
+        {% endfor %}
+    </ul>
 
-<h2>Source</h2>
-{{doc['source']}}
+    <h2>Source</h2>
+    <p>{{doc['source']}}</p>
 
-<h2>Year</h2>
-{{doc['year']}}
-
+    <h2>Year</h2>
+    <p>{{doc['year']}}</p>
+</div>
 </body>
 </html>

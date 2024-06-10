@@ -2,30 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Mendeley Python Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mendeley Downloader</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+        .container {
+            max-width: 800px;
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        table {
+            margin-top: 20px;
+        }
+        hr {
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
-<a href="/logout">Logout</a>
-<h1>{{name}}'s documents</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="/">Mendeley Downloader</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-<table>
-    {% for doc in docs %}
-    <tr>
-        <td><a href="/document?document_id={{doc['id']}}">{{doc.title}}</a></td>
-        {% if doc.file_attached %}
-            <td><a href="/download?document_id={{doc['id']}}">Download</a></td>
-        {% endif %}
-    </tr>
-    {% endfor %}
-</table>
+    <div class="container">
+        <h1>{{name}}'s Documents 
+            <a class="btn btn-primary btn-sm" href="/downloadAll">Download All</a>
+        </h1>
 
-<hr>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doc in docs %}
+                <tr>
+                    <td>
+                        <a href="/document?document_id={{doc['id']}}">
+                            {{doc.title}}
+                        </a>
+                    </td>
+                    <td>
+                        {% if doc.file_attached %}
+                        <a class="btn btn-secondary btn-sm" href="/download?document_id={{doc['id']}}">Download</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-<form action="/metadataLookup" method="GET">
-    DOI lookup:
-    <input type="text" name="doi">
-    <input type="submit">
-</form>
+        <hr>
 
+        <form action="/metadataLookup" method="GET">
+            <div class="form-group">
+                <label for="doi">DOI lookup:</label>
+                <input type="text" id="doi" name="doi" class="form-control" placeholder="Enter DOI">
+            </div>
+            <button type="submit" class="btn btn-primary">Lookup</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

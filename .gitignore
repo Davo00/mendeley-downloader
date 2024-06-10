@@ -7,3 +7,4 @@ screen*
 Gemfile.lock
 *.pyc
 config.yml
+config.yaml
