@@ -1,0 +1,9 @@
+.settings/
+.idea/
+*.iml
+venv/
+screen*
+.screenrc
+Gemfile.lock
+*.pyc
+config.yml

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Mendeley Python Example</title>
+</head>
+<body>
+<a href="/logout">Logout</a>
+<h1>{{name}}'s documents</h1>
+
+<table>
+    {% for doc in docs %}
+    <tr>
+        <td><a href="/document?document_id={{doc['id']}}">{{doc.title}}</a></td>
+        {% if doc.file_attached %}
+            <td><a href="/download?document_id={{doc['id']}}">Download</a></td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+
+<hr>
+
+<form action="/metadataLookup" method="GET">
+    DOI lookup:
+    <input type="text" name="doi">
+    <input type="submit">
+</form>
+
+</body>
+</html>
