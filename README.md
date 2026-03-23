@@ -1,3 +1,5 @@
+# Archived, since the feature has been integrated in Mendeley
+
 # Mendeley API Python Downloader #
 
 ## Functionality
